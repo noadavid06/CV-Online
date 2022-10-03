@@ -1,0 +1,102 @@
+*, *::before, *::after{
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    font-family: "Tw Cen Mt";
+    font-size: 14px;
+}
+
+.overlay{
+    position: absolute;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 100vh;
+    background: url("images/voiture.jpg") center center no-repeat;
+    background-size: cover;
+    z-index: -100;
+}
+
+header{
+    max-width: 80%;
+    margin-right: auto;
+    margin-left: auto;
+    background-color: rgb(1, 7, 12);
+}
+ nav{
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    width: 100%;
+    padding: 30px 0 10px;
+}
+
+ nav .log{
+    width: 160px;
+    border-radius: 50%;
+    height: 200px;
+}
+
+nav ul{
+    flex: 1;
+    display: flex;
+    justify-self: flex-end;
+    padding-right: 40px;
+}
+
+nav ul li {
+    list-style: none;
+    margin-left: 20px;
+}
+nav ul li a {
+    text-decoration: none;
+    color: aliceblue;
+    font-size: 1.5rem;
+    transition: color .3s;
+}
+nav ul li a:hover{
+    color: rgb(255, 123, 0);
+}
+
+#video-fond {
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+  #video-fond > video {
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+  /* 1. Pas de support d'object-fit */
+  @media (min-aspect-ratio: 16/9) {
+    #video-fond > video {
+      height: 300%;
+      top: -100%;
+    }
+  }
+  @media (max-aspect-ratio: 16/9) {
+    #video-fond > video {
+      width: 300%;
+      left: -100%;
+    }
+  }
+  /* 2. En cas de support d'object-fit, écrase les règles en (1) */
+  @supports (object-fit: cover) {
+    #video-fond > video {
+      width: 100%;
+      height: 100%;
+      top: 0;
+      left: 0;
+      object-fit: cover;
+    }
+  }
